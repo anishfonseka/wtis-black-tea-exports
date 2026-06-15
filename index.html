@@ -236,7 +236,8 @@ h2 {
   gap: 10px 14px;
   margin-top: 8px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 15px;
+  font-weight: 650;
 }
 .swatch {
   width: 10px;
@@ -512,7 +513,7 @@ function renderChart() {
   const rect = svg.getBoundingClientRect();
   const width = Math.max(320, rect.width);
   const height = Math.max(280, rect.height);
-  const margin = {top: 18, right: 20, bottom: 42, left: 64};
+  const margin = {top: 18, right: 24, bottom: 54, left: 78};
   svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
   svg.innerHTML = "";
   const plotW = width - margin.left - margin.right;
@@ -534,13 +535,13 @@ function renderChart() {
     const value = (maxY / 5) * i;
     const yy = y(value);
     make("line", {x1: margin.left, x2: width - margin.right, y1: yy, y2: yy, class: "gridline"});
-    const text = make("text", {x: margin.left - 10, y: yy + 4, "text-anchor": "end", fill: "#5e6673", "font-size": "11"});
+    const text = make("text", {x: margin.left - 12, y: yy + 5, "text-anchor": "end", fill: "#5e6673", "font-size": "14", "font-weight": "650"});
     text.textContent = metrics[metric].format(value).replace("mnmn", "mn");
   }
   chartTickYears(minYear, maxYear).forEach(year => {
     const xx = x(year);
     make("line", {x1: xx, x2: xx, y1: margin.top, y2: margin.top + plotH, stroke: "#eef1f3"});
-    const text = make("text", {x: xx, y: height - 14, "text-anchor": "middle", fill: "#5e6673", "font-size": "11"});
+    const text = make("text", {x: xx, y: height - 18, "text-anchor": "middle", fill: "#5e6673", "font-size": "14", "font-weight": "650"});
     text.textContent = year;
   });
   make("line", {x1: margin.left, x2: width - margin.right, y1: margin.top + plotH, y2: margin.top + plotH, stroke: "#9aa4ae"});
